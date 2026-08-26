@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Una pequeña sorpresa 🌷</title>
 
 <style>
 
 /* =====================================================
-   CONFIGURACIÓN GENERAL
+   RESET
 ===================================================== */
 
 *{
@@ -22,19 +26,25 @@ html,
 body{
     width:100%;
     height:100%;
-    overflow:hidden;
 }
 
 body{
-    font-family:"Segoe UI", Arial, sans-serif;
+
+    overflow:hidden;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
     color:white;
 
     background:
         radial-gradient(
-            circle at 50% 35%,
-            #243d35 0%,
-            #12231e 45%,
-            #070d0b 100%
+            circle at 50% 40%,
+            #213c32 0%,
+            #12271f 45%,
+            #07100c 100%
         );
 }
 
@@ -44,13 +54,18 @@ body{
 ===================================================== */
 
 #estrellas{
+
     position:fixed;
+
     inset:0;
+
     pointer-events:none;
+
     z-index:1;
 }
 
 .estrella{
+
     position:absolute;
 
     width:2px;
@@ -60,22 +75,23 @@ body{
 
     background:white;
 
-    opacity:.35;
+    opacity:.4;
 
     animation:
-        brillo 3s infinite alternate;
+        parpadear 3s ease-in-out infinite alternate;
 }
 
-@keyframes brillo{
+@keyframes parpadear{
 
     from{
         opacity:.15;
+        transform:scale(.7);
     }
 
     to{
-        opacity:.85;
+        opacity:.9;
+        transform:scale(1.4);
     }
-
 }
 
 
@@ -86,11 +102,14 @@ body{
 #intro{
 
     position:fixed;
+
     inset:0;
 
     display:flex;
-    justify-content:center;
+
     align-items:center;
+
+    justify-content:center;
 
     text-align:center;
 
@@ -99,12 +118,12 @@ body{
     background:
         radial-gradient(
             circle,
-            rgba(80,150,110,.15),
-            transparent 55%
+            rgba(75,150,100,.18),
+            transparent 60%
         ),
-        #060b09;
+        #060c09;
 
-    z-index:100;
+    z-index:200;
 
     transition:
         opacity 1s ease,
@@ -114,14 +133,13 @@ body{
 #intro.oculta{
 
     opacity:0;
-    visibility:hidden;
 
+    visibility:hidden;
 }
 
 .intro-contenido{
 
-    max-width:650px;
-
+    width:min(650px,95%);
 }
 
 .intro-icono{
@@ -136,46 +154,45 @@ body{
 
 @keyframes flotar{
 
-    0%,100%{
+    0%,
+    100%{
         transform:translateY(0);
     }
 
     50%{
         transform:translateY(-12px);
     }
-
 }
 
 .intro-contenido h1{
 
     font-size:
-        clamp(38px,8vw,70px);
+        clamp(38px,8vw,68px);
 
-    margin-bottom:20px;
+    margin-bottom:18px;
 
     background:
         linear-gradient(
             90deg,
             #ffffff,
-            #d9f4dd,
+            #cdebd5,
             #ffffff
         );
 
     -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
 
+    -webkit-text-fill-color:transparent;
 }
 
 .intro-contenido p{
 
-    color:#cbd7d0;
+    color:#cbd8d0;
 
     font-size:18px;
 
     line-height:1.8;
 
-    margin-bottom:35px;
-
+    margin-bottom:30px;
 }
 
 
@@ -185,53 +202,49 @@ body{
 
 button{
 
-    border:none;
+    border:0;
 
-    padding:
-        16px 30px;
-
-    border-radius:50px;
+    cursor:pointer;
 
     color:white;
 
     font-size:16px;
 
-    font-weight:bold;
+    font-weight:700;
 
-    cursor:pointer;
+    padding:
+        15px 28px;
+
+    border-radius:50px;
 
     background:
         linear-gradient(
             135deg,
-            #4c9b6c,
-            #78bd85
+            #4c9c6b,
+            #76bf86
         );
 
     box-shadow:
         0 10px 35px
-        rgba(80,180,110,.25);
+        rgba(70,180,100,.25);
 
     transition:.3s;
-
 }
 
 button:hover{
 
     transform:
         translateY(-3px)
-        scale(1.03);
+        scale(1.02);
 
     box-shadow:
-        0 15px 45px
-        rgba(80,180,110,.4);
-
+        0 15px 40px
+        rgba(70,180,100,.4);
 }
 
 button:active{
 
-    transform:
-        scale(.96);
-
+    transform:scale(.96);
 }
 
 
@@ -242,24 +255,19 @@ button:active{
 #jardin{
 
     position:fixed;
+
     inset:0;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    z-index:10;
 
     opacity:0;
 
     transition:opacity 1.5s;
 
+    z-index:5;
 }
 
 #jardin.visible{
 
     opacity:1;
-
 }
 
 
@@ -271,14 +279,17 @@ button:active{
 
     position:absolute;
 
-    top:28px;
+    top:25px;
 
-    width:90%;
+    left:0;
+
+    width:100%;
 
     text-align:center;
 
-    z-index:30;
+    padding:0 15px;
 
+    z-index:50;
 }
 
 .titulo h2{
@@ -286,16 +297,16 @@ button:active{
     font-size:
         clamp(28px,5vw,45px);
 
-    margin-bottom:8px;
+    line-height:1.2;
 
+    margin-bottom:8px;
 }
 
 .titulo p{
 
-    color:#b9cfc1;
+    color:#b9cec2;
 
-    font-size:15px;
-
+    font-size:16px;
 }
 
 
@@ -308,23 +319,25 @@ button:active{
     position:absolute;
 
     bottom:0;
+
     left:0;
 
     width:100%;
 
-    height:27%;
+    height:24%;
 
     background:
         linear-gradient(
             to top,
-            #101b12,
-            #17291b
+            #0c170e,
+            #15291a
         );
 
     border-radius:
         50% 50% 0 0 /
-        15% 15% 0 0;
+        18% 18% 0 0;
 
+    z-index:3;
 }
 
 
@@ -336,24 +349,23 @@ button:active{
 
     position:absolute;
 
-    bottom:75px;
+    bottom:120px;
 
-    width:200px;
-    height:430px;
+    width:190px;
+
+    height:400px;
 
     cursor:pointer;
 
     transform-origin:
         bottom center;
 
-    z-index:8;
-
+    z-index:10;
 }
 
 #tulipan{
 
-    left:5%;
-
+    left:6%;
 }
 
 #loto{
@@ -362,13 +374,11 @@ button:active{
 
     transform:
         translateX(-50%);
-
 }
 
 #campanilla{
 
-    right:5%;
-
+    right:6%;
 }
 
 
@@ -380,29 +390,31 @@ button:active{
 
     position:absolute;
 
-    bottom:0;
     left:50%;
 
+    bottom:0;
+
     width:18px;
-    height:12px;
+
+    height:11px;
 
     transform:
         translateX(-50%);
 
-    border-radius:
-        50%;
+    border-radius:50%;
 
     background:
-        linear-gradient(
-            135deg,
-            #684522,
-            #a36e38
+        radial-gradient(
+            circle at 35% 30%,
+            #b27b43,
+            #603d20
         );
 
     transition:
-        opacity .5s,
+        opacity .6s,
         transform .8s;
 
+    z-index:5;
 }
 
 .planta.creciendo .semilla{
@@ -411,8 +423,7 @@ button:active{
 
     transform:
         translateX(-50%)
-        scale(.2);
-
+        scale(.1);
 }
 
 
@@ -424,38 +435,40 @@ button:active{
 
     position:absolute;
 
-    bottom:4px;
     left:50%;
 
+    bottom:5px;
+
     width:9px;
+
     height:0;
 
     transform:
         translateX(-50%);
 
     transform-origin:
-        bottom;
+        bottom center;
 
     border-radius:20px;
 
     background:
         linear-gradient(
-            to right,
-            #275b38,
-            #71a76a,
-            #275b38
+            90deg,
+            #245a35,
+            #6ca968,
+            #245a35
         );
 
     transition:
         height 2.5s
         cubic-bezier(.2,.8,.2,1);
 
+    z-index:4;
 }
 
 .planta.creciendo .tallo{
 
-    height:290px;
-
+    height:285px;
 }
 
 
@@ -467,57 +480,56 @@ button:active{
 
     position:absolute;
 
-    width:58px;
-    height:32px;
+    width:65px;
+
+    height:34px;
 
     opacity:0;
-
-    background:
-        linear-gradient(
-            135deg,
-            #4e9655,
-            #1f5d32
-        );
-
-    transition:
-        opacity .7s,
-        transform .8s;
 
     border-radius:
         100% 0 100% 0;
 
+    background:
+        linear-gradient(
+            135deg,
+            #63a65e,
+            #215c32
+        );
+
+    transition:
+        opacity .8s,
+        transform .9s;
+
+    z-index:5;
 }
 
 .hoja.izquierda{
 
     left:
-        calc(50% - 58px);
+        calc(50% - 63px);
 
-    bottom:145px;
+    bottom:120px;
 
     transform:
         rotate(-35deg)
         scale(0);
-
 }
 
 .hoja.derecha{
 
     right:
-        calc(50% - 58px);
+        calc(50% - 63px);
 
-    bottom:190px;
+    bottom:175px;
 
     transform:
         rotate(35deg)
         scale(0);
-
 }
 
 .planta.creciendo .hoja{
 
     opacity:1;
-
 }
 
 .planta.creciendo
@@ -526,7 +538,6 @@ button:active{
     transform:
         rotate(-35deg)
         scale(1);
-
 }
 
 .planta.creciendo
@@ -535,35 +546,39 @@ button:active{
     transform:
         rotate(35deg)
         scale(1);
-
 }
 
 
 /* =====================================================
-   FLOR
+   FLOR GENERAL
 ===================================================== */
 
 .flor{
 
     position:absolute;
 
-    top:30px;
     left:50%;
 
-    width:140px;
-    height:140px;
+    top:20px;
+
+    width:160px;
+
+    height:160px;
 
     transform:
         translateX(-50%)
         scale(0);
 
+    transform-origin:center bottom;
+
     opacity:0;
 
     transition:
         transform 1.5s
-        cubic-bezier(.2,1.5,.4,1),
+        cubic-bezier(.2,1.35,.3,1),
         opacity 1s;
 
+    z-index:15;
 }
 
 .planta.adulta .flor{
@@ -573,7 +588,6 @@ button:active{
     transform:
         translateX(-50%)
         scale(1);
-
 }
 
 
@@ -586,35 +600,44 @@ button:active{
     position:absolute;
 
     left:50%;
+
     top:50%;
 
-    width:105px;
-    height:110px;
+    width:120px;
+
+    height:125px;
 
     transform:
         translate(-50%,-50%);
-
 }
+
+
+/* pétalos */
 
 .tulipan-petalo{
 
     position:absolute;
 
-    bottom:10px;
+    bottom:5px;
 
     width:58px;
-    height:95px;
+
+    height:105px;
+
+    border-radius:
+        60% 60% 38% 38%;
 
     background:
         linear-gradient(
             135deg,
-            #ff6689,
-            #c91f55
+            #ff7190,
+            #dc245d 70%,
+            #b8174d
         );
 
-    border-radius:
-        60% 60% 35% 35%;
-
+    box-shadow:
+        inset 6px 0 10px
+        rgba(255,255,255,.14);
 }
 
 .tulipan-petalo.izq{
@@ -622,18 +645,16 @@ button:active{
     left:4px;
 
     transform:
-        rotate(-20deg);
-
+        rotate(-18deg);
 }
 
 .tulipan-petalo.centro{
 
-    left:24px;
+    left:31px;
 
-    height:105px;
+    height:118px;
 
-    z-index:2;
-
+    z-index:3;
 }
 
 .tulipan-petalo.der{
@@ -641,27 +662,30 @@ button:active{
     right:4px;
 
     transform:
-        rotate(20deg);
-
+        rotate(18deg);
 }
+
+
+/* brillo */
 
 .tulipan-brillo{
 
     position:absolute;
 
-    width:16px;
-    height:45px;
+    left:46px;
 
-    top:15px;
-    left:45px;
+    top:16px;
+
+    width:14px;
+
+    height:48px;
 
     border-radius:50%;
 
     background:
-        rgba(255,255,255,.22);
+        rgba(255,255,255,.25);
 
-    z-index:4;
-
+    z-index:8;
 }
 
 
@@ -674,114 +698,193 @@ button:active{
     position:absolute;
 
     left:50%;
+
     top:50%;
 
-    width:140px;
-    height:120px;
+    width:155px;
+
+    height:140px;
 
     transform:
         translate(-50%,-50%);
-
 }
+
+
+/* pétalos base */
 
 .loto-petalo{
 
     position:absolute;
 
     left:50%;
-    bottom:10px;
 
-    width:40px;
-    height:100px;
+    bottom:7px;
+
+    width:42px;
+
+    height:108px;
 
     transform-origin:
         50% 100%;
 
     border-radius:
-        70% 70% 35% 35%;
+        70% 70% 38% 38%;
 
     background:
         linear-gradient(
-            135deg,
-            #ffd4eb,
-            #e980bd
+            180deg,
+            #ffe5f3,
+            #f2a8d3 55%,
+            #d969ad
         );
 
+    box-shadow:
+        inset 5px 0 8px
+        rgba(255,255,255,.22);
 }
 
-.loto-petalo:nth-child(1){
+
+/* pétalos traseros */
+
+.loto-atras-1{
+
+    transform:
+        translateX(-50%)
+        rotate(-55deg);
+
+    z-index:1;
+}
+
+.loto-atras-2{
+
+    transform:
+        translateX(-50%)
+        rotate(-27deg);
+
+    z-index:2;
+}
+
+.loto-atras-3{
+
+    transform:
+        translateX(-50%)
+        rotate(27deg);
+
+    z-index:2;
+}
+
+.loto-atras-4{
+
+    transform:
+        translateX(-50%)
+        rotate(55deg);
+
+    z-index:1;
+}
+
+
+/* pétalos centrales */
+
+.loto-medio-1{
+
+    width:46px;
+
+    height:116px;
+
+    transform:
+        translateX(-50%)
+        rotate(-30deg);
+
+    z-index:4;
+}
+
+.loto-medio-2{
+
+    width:48px;
+
+    height:123px;
 
     transform:
         translateX(-50%)
         rotate(0deg);
 
+    z-index:6;
 }
 
-.loto-petalo:nth-child(2){
+.loto-medio-3{
+
+    width:46px;
+
+    height:116px;
 
     transform:
         translateX(-50%)
-        rotate(45deg);
+        rotate(30deg);
 
+    z-index:4;
 }
 
-.loto-petalo:nth-child(3){
+
+/* pétalos delanteros */
+
+.loto-frente-1{
+
+    width:50px;
+
+    height:78px;
+
+    bottom:0;
 
     transform:
         translateX(-50%)
-        rotate(90deg);
+        rotate(-18deg);
 
+    z-index:9;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f8c6e3,
+            #df78b8
+        );
 }
 
-.loto-petalo:nth-child(4){
+.loto-frente-2{
+
+    width:50px;
+
+    height:78px;
+
+    bottom:0;
 
     transform:
         translateX(-50%)
-        rotate(135deg);
+        rotate(18deg);
 
+    z-index:9;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f8c6e3,
+            #df78b8
+        );
 }
 
-.loto-petalo:nth-child(5){
 
-    transform:
-        translateX(-50%)
-        rotate(180deg);
-
-}
-
-.loto-petalo:nth-child(6){
-
-    transform:
-        translateX(-50%)
-        rotate(225deg);
-
-}
-
-.loto-petalo:nth-child(7){
-
-    transform:
-        translateX(-50%)
-        rotate(270deg);
-
-}
-
-.loto-petalo:nth-child(8){
-
-    transform:
-        translateX(-50%)
-        rotate(315deg);
-
-}
+/* centro */
 
 .loto-centro{
 
     position:absolute;
 
     left:50%;
-    top:58%;
 
-    width:27px;
-    height:27px;
+    top:52%;
+
+    width:30px;
+
+    height:30px;
 
     transform:
         translate(-50%,-50%);
@@ -791,21 +894,20 @@ button:active{
     background:
         radial-gradient(
             circle,
-            #ffe99a,
-            #dba735
+            #fff0a4,
+            #e3ae37
         );
 
     box-shadow:
-        0 0 15px
-        rgba(255,225,120,.5);
+        0 0 18px
+        rgba(255,220,120,.55);
 
-    z-index:10;
-
+    z-index:15;
 }
 
 
 /* =====================================================
-   🔔 CAMPANILLA
+   🔔 CAMPANILLAS
 ===================================================== */
 
 .campanilla-flor{
@@ -813,100 +915,144 @@ button:active{
     position:absolute;
 
     left:50%;
-    top:50%;
 
-    width:140px;
-    height:140px;
+    top:45%;
+
+    width:160px;
+
+    height:150px;
 
     transform:
         translate(-50%,-50%);
-
 }
 
-.campanilla-flor .flor-item{
+
+/* cada campanilla */
+
+.campanilla-item{
 
     position:absolute;
 
-    width:55px;
-    height:75px;
+    width:48px;
+
+    height:74px;
+
+    border-radius:
+        48% 48% 48% 48%;
 
     background:
         linear-gradient(
-            135deg,
-            #a985ff,
-            #6040bd
+            180deg,
+            #b996ff,
+            #8960dc 55%,
+            #5b3bab
         );
 
-    border-radius:
-        50% 50% 45% 45%;
+    box-shadow:
+        inset 5px 0 9px
+        rgba(255,255,255,.18);
 
     transform-origin:
-        bottom center;
-
+        50% 0;
 }
 
-.campanilla-flor
-.flor-item:nth-child(1){
 
-    left:45px;
-    top:15px;
+/* posiciones */
+
+.campanilla-1{
+
+    left:9px;
+
+    top:28px;
 
     transform:
-        rotate(-18deg);
-
+        rotate(-20deg);
 }
 
-.campanilla-flor
-.flor-item:nth-child(2){
+.campanilla-2{
 
-    left:10px;
-    top:45px;
+    left:54px;
+
+    top:10px;
 
     transform:
-        rotate(-38deg);
-
+        rotate(-3deg);
 }
 
-.campanilla-flor
-.flor-item:nth-child(3){
+.campanilla-3{
 
-    right:10px;
-    top:45px;
+    right:9px;
+
+    top:28px;
 
     transform:
-        rotate(38deg);
-
+        rotate(20deg);
 }
 
-.campanilla-flor
-.flor-item:nth-child(4){
+.campanilla-4{
 
-    left:43px;
-    top:55px;
+    left:54px;
+
+    top:62px;
 
     transform:
-        rotate(0deg);
-
+        rotate(0deg)
+        scale(.82);
 }
 
-.campanilla-centro{
+
+/* abertura */
+
+.campanilla-item::after{
+
+    content:"";
 
     position:absolute;
 
     left:50%;
-    bottom:7px;
 
-    width:10px;
-    height:25px;
+    bottom:-3px;
+
+    width:43px;
+
+    height:19px;
 
     transform:
         translateX(-50%);
 
-    border-radius:
-        50%;
+    border-radius:50%;
 
-    background:#f7dc80;
+    background:
+        #6845b6;
 
+    box-shadow:
+        inset 0 3px 5px
+        rgba(0,0,0,.2);
+}
+
+
+/* pistilo */
+
+.campanilla-item span{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:-9px;
+
+    width:4px;
+
+    height:17px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius:50%;
+
+    background:#f6d879;
+
+    z-index:5;
 }
 
 
@@ -918,29 +1064,28 @@ button:active{
 
     position:absolute;
 
-    bottom:-45px;
     left:50%;
+
+    bottom:-40px;
 
     transform:
         translateX(-50%);
 
     white-space:nowrap;
 
-    color:#c8d9ce;
+    color:#c9d8cf;
 
     font-size:15px;
 
     opacity:0;
 
     transition:1s;
-
 }
 
 .planta.adulta
 .nombre-flor{
 
     opacity:1;
-
 }
 
 
@@ -953,11 +1098,10 @@ button:active{
     position:fixed;
 
     left:50%;
-    bottom:20px;
 
-    width:min(900px,90%);
+    bottom:27px;
 
-    padding:8px 18px;
+    width:min(850px,90%);
 
     transform:
         translateX(-50%);
@@ -968,20 +1112,20 @@ button:active{
 
     font-size:15px;
 
-    line-height:1.6;
+    line-height:1.55;
 
     opacity:0;
 
     transition:1s;
 
-    z-index:31;
+    z-index:40;
 
+    pointer-events:none;
 }
 
 .mensaje.visible{
 
     opacity:1;
-
 }
 
 
@@ -997,15 +1141,14 @@ button:active{
 
     left:50%;
 
-    bottom:105px;
+    bottom:100px;
 
     transform:
         translateX(-50%);
 
-    z-index:40;
+    z-index:60;
 
     white-space:nowrap;
-
 }
 
 
@@ -1021,9 +1164,9 @@ button:active{
 
     display:flex;
 
-    justify-content:center;
-
     align-items:center;
+
+    justify-content:center;
 
     padding:20px;
 
@@ -1040,31 +1183,34 @@ button:active{
     transition:.5s;
 
     z-index:100;
-
 }
 
 .modal.visible{
 
     opacity:1;
-    visibility:visible;
 
+    visibility:visible;
 }
 
 .tarjeta{
 
     width:min(500px,95%);
 
-    padding:40px 30px;
+    max-height:85vh;
 
-    border-radius:25px;
+    overflow:auto;
+
+    padding:38px 28px;
 
     text-align:center;
+
+    border-radius:25px;
 
     background:
         linear-gradient(
             145deg,
-            #1d2b23,
-            #101813
+            #1d2c24,
+            #101812
         );
 
     border:
@@ -1073,49 +1219,44 @@ button:active{
 
     box-shadow:
         0 30px 100px
-        rgba(0,0,0,.6);
+        rgba(0,0,0,.65);
 
-    transform:
-        scale(.8);
+    transform:scale(.8);
 
     transition:.5s;
-
 }
 
 .modal.visible
 .tarjeta{
 
-    transform:
-        scale(1);
-
+    transform:scale(1);
 }
 
 .tarjeta .emoji{
 
-    font-size:70px;
+    font-size:65px;
 
     margin-bottom:15px;
-
 }
 
 .tarjeta h3{
 
-    font-size:30px;
+    font-size:29px;
+
+    color:#c4e8cc;
 
     margin-bottom:15px;
-
-    color:#bde8c7;
-
 }
 
 .tarjeta p{
 
-    color:#d7ded9;
+    color:#d8e0da;
+
+    font-size:15px;
 
     line-height:1.8;
 
     margin-bottom:25px;
-
 }
 
 
@@ -1131,30 +1272,26 @@ button:active{
 
     pointer-events:none;
 
-    z-index:200;
+    z-index:300;
 
     animation:
-        subir 5s linear forwards;
-
+        subirCorazon 5s linear forwards;
 }
 
-@keyframes subir{
+@keyframes subirCorazon{
 
     0%{
 
         transform:
             translateY(0)
             scale(.5)
-            rotate(0);
+            rotate(0deg);
 
         opacity:0;
-
     }
 
     15%{
-
         opacity:1;
-
     }
 
     100%{
@@ -1165,9 +1302,7 @@ button:active{
             rotate(360deg);
 
         opacity:0;
-
     }
-
 }
 
 
@@ -1180,61 +1315,60 @@ button:active{
     html,
     body{
 
+        width:100%;
+
+        height:100%;
+
         height:100dvh;
 
         overflow:hidden;
-
     }
 
+
+    /* título */
 
     .titulo{
 
         top:24px;
 
-        width:94%;
-
+        padding:
+            0 12px;
     }
-
 
     .titulo h2{
 
         font-size:27px;
-
-        line-height:1.2;
-
     }
-
 
     .titulo p{
 
         font-size:14px;
-
-        margin-top:7px;
-
     }
 
+
+    /* suelo */
 
     .suelo{
 
-        height:21%;
-
+        height:19%;
     }
 
+
+    /* plantas */
 
     .planta{
 
         width:150px;
 
-        height:350px;
+        height:340px;
 
-        bottom:150px;
+        bottom:205px;
 
         transform:
-            scale(.58);
+            scale(.52);
 
         transform-origin:
             bottom center;
-
     }
 
 
@@ -1243,8 +1377,7 @@ button:active{
         left:-22px;
 
         transform:
-            scale(.58);
-
+            scale(.52);
     }
 
 
@@ -1254,8 +1387,7 @@ button:active{
 
         transform:
             translateX(-50%)
-            scale(.58);
-
+            scale(.52);
     }
 
 
@@ -1264,56 +1396,65 @@ button:active{
         right:-22px;
 
         transform:
-            scale(.58);
-
+            scale(.52);
     }
 
+
+    /* ocultar nombres */
 
     .nombre-flor{
 
-        display:none;
-
+        display:none !important;
     }
 
+
+    /* mensaje */
 
     .mensaje{
 
-        bottom:18px;
+        bottom:88px;
 
-        width:94%;
+        width:92%;
 
-        padding:4px 8px;
+        max-width:400px;
 
-        font-size:12px;
+        padding:
+            0 5px;
 
-        line-height:1.45;
+        font-size:11.5px;
 
+        line-height:1.42;
     }
 
+
+    /* botón */
 
     #botonFinal{
 
-        bottom:105px;
+        bottom:15px;
 
-        width:86%;
+        width:88%;
 
-        max-width:360px;
+        max-width:370px;
 
-        padding:14px 18px;
+        min-height:57px;
+
+        padding:
+            13px 16px;
 
         font-size:14px;
 
-        line-height:1.3;
+        line-height:1.25;
 
         white-space:normal;
-
     }
 
+
+    /* modal */
 
     .modal{
 
         padding:15px;
-
     }
 
 
@@ -1321,43 +1462,42 @@ button:active{
 
         width:94%;
 
-        padding:30px 22px;
+        max-height:82vh;
 
+        padding:
+            28px 20px;
     }
 
 
     .tarjeta .emoji{
 
-        font-size:60px;
-
+        font-size:55px;
     }
 
 
     .tarjeta h3{
 
-        font-size:25px;
-
+        font-size:24px;
     }
 
 
     .tarjeta p{
 
-        font-size:15px;
+        font-size:14px;
 
         line-height:1.7;
-
     }
 
 
     .tarjeta button{
 
         width:100%;
-
     }
 
 }
 
 </style>
+
 </head>
 
 
@@ -1388,16 +1528,22 @@ button:active{
         </h1>
 
         <p>
-            A veces una flor tarda en crecer,
-            pero cuando lo hace, puede convertirse
-            en algo realmente bonito.
+
+            Hay cosas bonitas que necesitan
+            tiempo para crecer.
+
             <br><br>
-            Esta pequeña sorpresa también necesita
-            unos segundos para florecer. 🌷
+
+            Esta pequeña sorpresa también.
+
+            🌷🪷🔔
+
         </p>
 
         <button onclick="comenzar()">
+
             🌱 Comenzar la sorpresa
+
         </button>
 
     </div>
@@ -1411,6 +1557,7 @@ button:active{
 
 <section id="jardin">
 
+
     <div class="titulo">
 
         <h2>
@@ -1423,8 +1570,6 @@ button:active{
 
     </div>
 
-
-    <!-- SUELO -->
 
     <div class="suelo"></div>
 
@@ -1452,13 +1597,21 @@ button:active{
 
             <div class="tulipan-flor">
 
-                <div class="tulipan-petalo izq"></div>
+                <div
+                    class="tulipan-petalo izq">
+                </div>
 
-                <div class="tulipan-petalo centro"></div>
+                <div
+                    class="tulipan-petalo centro">
+                </div>
 
-                <div class="tulipan-petalo der"></div>
+                <div
+                    class="tulipan-petalo der">
+                </div>
 
-                <div class="tulipan-brillo"></div>
+                <div
+                    class="tulipan-brillo">
+                </div>
 
             </div>
 
@@ -1473,7 +1626,7 @@ button:active{
 
 
     <!-- =================================================
-         🪷 LOTO
+         🪷 FLOR DE LOTO
     ================================================== -->
 
     <div
@@ -1495,14 +1648,41 @@ button:active{
 
             <div class="loto-flor">
 
-                <div class="loto-petalo"></div>
-                <div class="loto-petalo"></div>
-                <div class="loto-petalo"></div>
-                <div class="loto-petalo"></div>
-                <div class="loto-petalo"></div>
-                <div class="loto-petalo"></div>
-                <div class="loto-petalo"></div>
-                <div class="loto-petalo"></div>
+                <div
+                    class="loto-petalo loto-atras-1">
+                </div>
+
+                <div
+                    class="loto-petalo loto-atras-2">
+                </div>
+
+                <div
+                    class="loto-petalo loto-atras-3">
+                </div>
+
+                <div
+                    class="loto-petalo loto-atras-4">
+                </div>
+
+                <div
+                    class="loto-petalo loto-medio-1">
+                </div>
+
+                <div
+                    class="loto-petalo loto-medio-2">
+                </div>
+
+                <div
+                    class="loto-petalo loto-medio-3">
+                </div>
+
+                <div
+                    class="loto-petalo loto-frente-1">
+                </div>
+
+                <div
+                    class="loto-petalo loto-frente-2">
+                </div>
 
                 <div class="loto-centro"></div>
 
@@ -1519,7 +1699,7 @@ button:active{
 
 
     <!-- =================================================
-         🔔 CAMPANILLA
+         🔔 CAMPANILLAS
     ================================================== -->
 
     <div
@@ -1541,15 +1721,38 @@ button:active{
 
             <div class="campanilla-flor">
 
-                <div class="flor-item"></div>
 
-                <div class="flor-item"></div>
+                <div
+                    class="campanilla-item campanilla-1">
 
-                <div class="flor-item"></div>
+                    <span></span>
 
-                <div class="flor-item"></div>
+                </div>
 
-                <div class="campanilla-centro"></div>
+
+                <div
+                    class="campanilla-item campanilla-2">
+
+                    <span></span>
+
+                </div>
+
+
+                <div
+                    class="campanilla-item campanilla-3">
+
+                    <span></span>
+
+                </div>
+
+
+                <div
+                    class="campanilla-item campanilla-4">
+
+                    <span></span>
+
+                </div>
+
 
             </div>
 
@@ -1557,8 +1760,34 @@ button:active{
 
 
         <div class="nombre-flor">
-            🔔 Campanilla
+            🔔 Campanillas
         </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MENSAJE
+    ================================================== -->
+
+    <div
+        class="mensaje"
+        id="mensaje"
+    >
+
+        🌷 Tulipán — porque tu ternura hace que
+        los días normales se sientan especiales.
+
+        <br>
+
+        🪷 Loto — porque hay algo en ti que admiro
+        y que hace que quiera seguir conociéndote.
+
+        <br>
+
+        🔔 Campanillas — porque contigo hasta los
+        pequeños momentos pueden convertirse
+        en recuerdos bonitos.
 
     </div>
 
@@ -1577,34 +1806,11 @@ button:active{
     </button>
 
 
-    <!-- =================================================
-         MENSAJE
-    ================================================== -->
-
-    <div
-        class="mensaje"
-        id="mensaje"
-    >
-
-        🌷 Tulipán — porque tu ternura hace que
-        los días normales se sientan especiales.
-        <br>
-
-        🪷 Loto — porque hay algo en ti que admiro
-        y que hace que quiera seguir conociéndote.
-        <br>
-
-        🔔 Campanilla — porque contigo hasta los
-        pequeños momentos pueden convertirse
-        en recuerdos bonitos.
-
-    </div>
-
 </section>
 
 
 <!-- =====================================================
-     CARTA
+     MODAL
 ===================================================== -->
 
 <div
@@ -1622,26 +1828,31 @@ button:active{
             Para ti 💗
         </h3>
 
-        <p>
+        <p id="textoCarta">
 
             Elegí estas tres flores porque cada una
             me recuerda un poquito a ti.
 
             <br><br>
 
-            El tulipán por la ternura,
-            el loto por la belleza que encuentro
-            incluso en los pequeños detalles,
-            y las campanillas por esos momentos
-            que sin darme cuenta terminan
-            haciéndome sonreír.
+            🌷 El tulipán por la ternura.
+
+            <br>
+
+            🪷 El loto por esa belleza que encuentro
+            en los pequeños detalles.
+
+            <br>
+
+            🔔 Las campanillas por esos momentos que,
+            sin darme cuenta, terminan haciéndome sonreír.
 
             <br><br>
 
             Y si tuviera que elegir una flor
             para representar lo que siento...
 
-            <br>
+            <br><br>
 
             probablemente ninguna sería suficiente. ❤️
 
@@ -1659,13 +1870,13 @@ button:active{
 <script>
 
 /* =====================================================
-   CREAR ESTRELLAS
+   ESTRELLAS
 ===================================================== */
 
 const estrellas =
 document.getElementById("estrellas");
 
-for(let i=0;i<90;i++){
+for(let i=0;i<100;i++){
 
     const estrella =
     document.createElement("div");
@@ -1679,10 +1890,9 @@ for(let i=0;i<90;i++){
         Math.random()*100+"%";
 
     estrella.style.animationDelay =
-        Math.random()*3+"s";
+        Math.random()*4+"s";
 
     estrellas.appendChild(estrella);
-
 }
 
 
@@ -1697,6 +1907,7 @@ function comenzar(){
         .classList
         .add("oculta");
 
+
     setTimeout(()=>{
 
         document
@@ -1704,10 +1915,10 @@ function comenzar(){
             .classList
             .add("visible");
 
+
         comenzarCrecimiento();
 
     },700);
-
 }
 
 
@@ -1717,38 +1928,89 @@ function comenzar(){
 
 function comenzarCrecimiento(){
 
-    const plantas = [
+    const tulipan =
+        document.getElementById("tulipan");
 
-        document.getElementById("tulipan"),
+    const loto =
+        document.getElementById("loto");
 
-        document.getElementById("loto"),
-
-        document.getElementById("campanilla")
-
-    ];
-
-
-    /* CRECEN UNA POR UNA */
-
-    plantas.forEach((planta,index)=>{
-
-        setTimeout(()=>{
-
-            planta.classList.add("creciendo");
-
-        },1000 + index*1800);
+    const campanilla =
+        document.getElementById("campanilla");
 
 
-        setTimeout(()=>{
+    /* 🌷 TULIPÁN */
 
-            planta.classList.add("adulta");
+    setTimeout(()=>{
 
-        },3600 + index*1800);
+        tulipan
+            .classList
+            .add("creciendo");
 
-    });
+    },700);
 
 
-    /* MOSTRAR BOTÓN */
+    setTimeout(()=>{
+
+        tulipan
+            .classList
+            .add("adulta");
+
+    },3000);
+
+
+    /* 🪷 LOTO */
+
+    setTimeout(()=>{
+
+        loto
+            .classList
+            .add("creciendo");
+
+    },2500);
+
+
+    setTimeout(()=>{
+
+        loto
+            .classList
+            .add("adulta");
+
+    },4800);
+
+
+    /* 🔔 CAMPANILLAS */
+
+    setTimeout(()=>{
+
+        campanilla
+            .classList
+            .add("creciendo");
+
+    },4300);
+
+
+    setTimeout(()=>{
+
+        campanilla
+            .classList
+            .add("adulta");
+
+    },6600);
+
+
+    /* MENSAJE */
+
+    setTimeout(()=>{
+
+        document
+            .getElementById("mensaje")
+            .classList
+            .add("visible");
+
+    },7600);
+
+
+    /* BOTÓN */
 
     setTimeout(()=>{
 
@@ -1756,87 +2018,107 @@ function comenzarCrecimiento(){
             .getElementById("botonFinal")
             .style.display="block";
 
-        document
-            .getElementById("mensaje")
-            .classList
-            .add("visible");
-
-    },8500);
-
+    },8000);
 }
 
 
 /* =====================================================
-   MOSTRAR INFORMACIÓN DE CADA FLOR
+   INFORMACIÓN DE CADA FLOR
 ===================================================== */
 
 function mostrarFlor(tipo){
 
-    let titulo="";
-    let texto="";
-    let emoji="";
+    const emoji =
+        document
+        .querySelector(".tarjeta .emoji");
+
+    const titulo =
+        document
+        .querySelector(".tarjeta h3");
+
+    const texto =
+        document
+        .getElementById("textoCarta");
 
 
     if(tipo==="tulipan"){
 
-        titulo="🌷 El tulipán";
+        emoji.textContent="🌷";
 
-        emoji="🌷";
+        titulo.textContent=
+            "El tulipán";
 
-        texto=
-        "Lo elegí porque representa cariño y ternura. " +
-        "Me recuerda a esa sensación bonita que aparece " +
-        "cuando alguien empieza a ocupar un lugar especial " +
-        "en tu vida.";
+        texto.innerHTML=`
 
+            Lo elegí porque representa
+            cariño y ternura.
+
+            <br><br>
+
+            Me recuerda a esa sensación bonita
+            que aparece cuando alguien empieza
+            a ocupar un lugar especial
+            en tu vida.
+
+        `;
     }
 
 
     if(tipo==="loto"){
 
-        titulo="🪷 La flor de loto";
+        emoji.textContent="🪷";
 
-        emoji="🪷";
+        titulo.textContent=
+            "La flor de loto";
 
-        texto=
-        "La elegí porque representa belleza y calma. " +
-        "Me gusta porque, incluso en momentos difíciles, " +
-        "puede seguir creciendo y mostrando algo hermoso.";
+        texto.innerHTML=`
 
+            La elegí porque representa
+            belleza, calma y admiración.
+
+            <br><br>
+
+            Me gusta porque puede crecer incluso
+            en lugares difíciles y aun así
+            terminar mostrando algo hermoso.
+
+            <br><br>
+
+            Un poquito como esas personas
+            que hacen bonito cualquier lugar
+            simplemente estando ahí.
+
+        `;
     }
 
 
     if(tipo==="campanilla"){
 
-        titulo="🔔 La campanilla";
+        emoji.textContent="🔔";
 
-        emoji="🔔";
+        titulo.textContent=
+            "Las campanillas";
 
-        texto=
-        "La elegí porque me recuerda a la alegría de " +
-        "los pequeños momentos. Esos instantes que quizá " +
-        "parecen simples, pero que terminan significando mucho.";
+        texto.innerHTML=`
 
+            Las elegí porque me recuerdan
+            a la alegría de los pequeños momentos.
+
+            <br><br>
+
+            Esos momentos que quizás parecen
+            simples, pero que terminan
+            convirtiéndose en recuerdos
+            que uno quiere guardar.
+
+        `;
     }
 
-
-    document
-        .querySelector(".tarjeta .emoji")
-        .textContent=emoji;
-
-    document
-        .querySelector(".tarjeta h3")
-        .textContent=titulo;
-
-    document
-        .querySelector(".tarjeta p")
-        .textContent=texto;
 
     document
         .getElementById("modal")
         .classList
         .add("visible");
-
 }
 
 
@@ -1846,43 +2128,55 @@ function mostrarFlor(tipo){
 
 function abrirCarta(){
 
-    const tarjeta =
-        document.querySelector(".tarjeta");
+    const emoji =
+        document
+        .querySelector(".tarjeta .emoji");
 
-    tarjeta.querySelector(".emoji")
-        .textContent="🌷🪷🔔";
+    const titulo =
+        document
+        .querySelector(".tarjeta h3");
 
-    tarjeta.querySelector("h3")
-        .textContent="Para ti 💗";
+    const texto =
+        document
+        .getElementById("textoCarta");
 
-    tarjeta.querySelector("p")
-        .innerHTML=`
 
-        Elegí estas tres flores porque cada una
-        me recuerda un poquito a ti.
+    emoji.textContent="🌷🪷🔔";
+
+    titulo.textContent=
+        "Para ti 💗";
+
+
+    texto.innerHTML=`
+
+        Elegí estas tres flores porque
+        cada una me recuerda un poquito a ti.
 
         <br><br>
 
-        🌷 El tulipán por la ternura.
+        🌷 El tulipán por tu ternura.
 
-        <br>
+        <br><br>
 
         🪷 El loto por esa belleza que encuentro
-        en los pequeños detalles.
-
-        <br>
-
-        🔔 La campanilla por esos momentos que
-        sin darme cuenta terminan haciéndome sonreír.
+        incluso en los pequeños detalles.
 
         <br><br>
 
-        Y si tuviera que elegir una flor para
-        representar lo que siento...
+        🔔 Las campanillas por esos momentos
+        que sin darme cuenta terminan
+        haciéndome sonreír.
 
         <br><br>
 
-        probablemente ninguna sería suficiente. ❤️
+        Y si tuviera que elegir una sola flor
+        para representar lo que siento...
+
+        <br><br>
+
+        probablemente ninguna sería suficiente.
+
+        ❤️
 
     `;
 
@@ -1894,7 +2188,6 @@ function abrirCarta(){
 
 
     crearCorazones();
-
 }
 
 
@@ -1908,7 +2201,6 @@ function cerrarCarta(){
         .getElementById("modal")
         .classList
         .remove("visible");
-
 }
 
 
@@ -1918,7 +2210,7 @@ function cerrarCarta(){
 
 function crearCorazones(){
 
-    for(let i=0;i<20;i++){
+    for(let i=0;i<25;i++){
 
         setTimeout(()=>{
 
@@ -1928,7 +2220,7 @@ function crearCorazones(){
             corazon.className="corazon";
 
             corazon.textContent =
-                Math.random()>.5
+                Math.random() > .5
                 ? "❤️"
                 : "💗";
 
@@ -1941,7 +2233,10 @@ function crearCorazones(){
             corazon.style.animationDuration =
                 (4 + Math.random()*3)+"s";
 
-            document.body.appendChild(corazon);
+
+            document
+                .body
+                .appendChild(corazon);
 
 
             setTimeout(()=>{
@@ -1950,28 +2245,29 @@ function crearCorazones(){
 
             },7000);
 
-        },i*150);
-
+        },i*130);
     }
-
 }
 
 
 /* =====================================================
-   CERRAR MODAL AL TOCAR AFUERA
+   CERRAR MODAL TOCANDO AFUERA
 ===================================================== */
 
 document
-.getElementById("modal")
-.addEventListener("click",function(e){
+    .getElementById("modal")
+    .addEventListener(
+        "click",
+        function(e){
 
-    if(e.target===this){
+            if(e.target===this){
 
-        cerrarCarta();
+                cerrarCarta();
 
-    }
+            }
 
-});
+        }
+    );
 
 </script>
 
