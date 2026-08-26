@@ -1,0 +1,1979 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Una pequeña sorpresa 🌷</title>
+
+<style>
+
+/* =====================================================
+   CONFIGURACIÓN GENERAL
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+body{
+    font-family:"Segoe UI", Arial, sans-serif;
+    color:white;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            #243d35 0%,
+            #12231e 45%,
+            #070d0b 100%
+        );
+}
+
+
+/* =====================================================
+   ESTRELLAS
+===================================================== */
+
+#estrellas{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:1;
+}
+
+.estrella{
+    position:absolute;
+
+    width:2px;
+    height:2px;
+
+    border-radius:50%;
+
+    background:white;
+
+    opacity:.35;
+
+    animation:
+        brillo 3s infinite alternate;
+}
+
+@keyframes brillo{
+
+    from{
+        opacity:.15;
+    }
+
+    to{
+        opacity:.85;
+    }
+
+}
+
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+#intro{
+
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:25px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(80,150,110,.15),
+            transparent 55%
+        ),
+        #060b09;
+
+    z-index:100;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+#intro.oculta{
+
+    opacity:0;
+    visibility:hidden;
+
+}
+
+.intro-contenido{
+
+    max-width:650px;
+
+}
+
+.intro-icono{
+
+    font-size:75px;
+
+    margin-bottom:20px;
+
+    animation:
+        flotar 3s ease-in-out infinite;
+}
+
+@keyframes flotar{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+}
+
+.intro-contenido h1{
+
+    font-size:
+        clamp(38px,8vw,70px);
+
+    margin-bottom:20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #d9f4dd,
+            #ffffff
+        );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+}
+
+.intro-contenido p{
+
+    color:#cbd7d0;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    margin-bottom:35px;
+
+}
+
+
+/* =====================================================
+   BOTONES
+===================================================== */
+
+button{
+
+    border:none;
+
+    padding:
+        16px 30px;
+
+    border-radius:50px;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4c9b6c,
+            #78bd85
+        );
+
+    box-shadow:
+        0 10px 35px
+        rgba(80,180,110,.25);
+
+    transition:.3s;
+
+}
+
+button:hover{
+
+    transform:
+        translateY(-3px)
+        scale(1.03);
+
+    box-shadow:
+        0 15px 45px
+        rgba(80,180,110,.4);
+
+}
+
+button:active{
+
+    transform:
+        scale(.96);
+
+}
+
+
+/* =====================================================
+   JARDÍN
+===================================================== */
+
+#jardin{
+
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    z-index:10;
+
+    opacity:0;
+
+    transition:opacity 1.5s;
+
+}
+
+#jardin.visible{
+
+    opacity:1;
+
+}
+
+
+/* =====================================================
+   TÍTULO
+===================================================== */
+
+.titulo{
+
+    position:absolute;
+
+    top:28px;
+
+    width:90%;
+
+    text-align:center;
+
+    z-index:30;
+
+}
+
+.titulo h2{
+
+    font-size:
+        clamp(28px,5vw,45px);
+
+    margin-bottom:8px;
+
+}
+
+.titulo p{
+
+    color:#b9cfc1;
+
+    font-size:15px;
+
+}
+
+
+/* =====================================================
+   SUELO
+===================================================== */
+
+.suelo{
+
+    position:absolute;
+
+    bottom:0;
+    left:0;
+
+    width:100%;
+
+    height:27%;
+
+    background:
+        linear-gradient(
+            to top,
+            #101b12,
+            #17291b
+        );
+
+    border-radius:
+        50% 50% 0 0 /
+        15% 15% 0 0;
+
+}
+
+
+/* =====================================================
+   PLANTAS
+===================================================== */
+
+.planta{
+
+    position:absolute;
+
+    bottom:75px;
+
+    width:200px;
+    height:430px;
+
+    cursor:pointer;
+
+    transform-origin:
+        bottom center;
+
+    z-index:8;
+
+}
+
+#tulipan{
+
+    left:5%;
+
+}
+
+#loto{
+
+    left:50%;
+
+    transform:
+        translateX(-50%);
+
+}
+
+#campanilla{
+
+    right:5%;
+
+}
+
+
+/* =====================================================
+   SEMILLA
+===================================================== */
+
+.semilla{
+
+    position:absolute;
+
+    bottom:0;
+    left:50%;
+
+    width:18px;
+    height:12px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius:
+        50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #684522,
+            #a36e38
+        );
+
+    transition:
+        opacity .5s,
+        transform .8s;
+
+}
+
+.planta.creciendo .semilla{
+
+    opacity:0;
+
+    transform:
+        translateX(-50%)
+        scale(.2);
+
+}
+
+
+/* =====================================================
+   TALLO
+===================================================== */
+
+.tallo{
+
+    position:absolute;
+
+    bottom:4px;
+    left:50%;
+
+    width:9px;
+    height:0;
+
+    transform:
+        translateX(-50%);
+
+    transform-origin:
+        bottom;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            to right,
+            #275b38,
+            #71a76a,
+            #275b38
+        );
+
+    transition:
+        height 2.5s
+        cubic-bezier(.2,.8,.2,1);
+
+}
+
+.planta.creciendo .tallo{
+
+    height:290px;
+
+}
+
+
+/* =====================================================
+   HOJAS
+===================================================== */
+
+.hoja{
+
+    position:absolute;
+
+    width:58px;
+    height:32px;
+
+    opacity:0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4e9655,
+            #1f5d32
+        );
+
+    transition:
+        opacity .7s,
+        transform .8s;
+
+    border-radius:
+        100% 0 100% 0;
+
+}
+
+.hoja.izquierda{
+
+    left:
+        calc(50% - 58px);
+
+    bottom:145px;
+
+    transform:
+        rotate(-35deg)
+        scale(0);
+
+}
+
+.hoja.derecha{
+
+    right:
+        calc(50% - 58px);
+
+    bottom:190px;
+
+    transform:
+        rotate(35deg)
+        scale(0);
+
+}
+
+.planta.creciendo .hoja{
+
+    opacity:1;
+
+}
+
+.planta.creciendo
+.hoja.izquierda{
+
+    transform:
+        rotate(-35deg)
+        scale(1);
+
+}
+
+.planta.creciendo
+.hoja.derecha{
+
+    transform:
+        rotate(35deg)
+        scale(1);
+
+}
+
+
+/* =====================================================
+   FLOR
+===================================================== */
+
+.flor{
+
+    position:absolute;
+
+    top:30px;
+    left:50%;
+
+    width:140px;
+    height:140px;
+
+    transform:
+        translateX(-50%)
+        scale(0);
+
+    opacity:0;
+
+    transition:
+        transform 1.5s
+        cubic-bezier(.2,1.5,.4,1),
+        opacity 1s;
+
+}
+
+.planta.adulta .flor{
+
+    opacity:1;
+
+    transform:
+        translateX(-50%)
+        scale(1);
+
+}
+
+
+/* =====================================================
+   🌷 TULIPÁN
+===================================================== */
+
+.tulipan-flor{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:105px;
+    height:110px;
+
+    transform:
+        translate(-50%,-50%);
+
+}
+
+.tulipan-petalo{
+
+    position:absolute;
+
+    bottom:10px;
+
+    width:58px;
+    height:95px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff6689,
+            #c91f55
+        );
+
+    border-radius:
+        60% 60% 35% 35%;
+
+}
+
+.tulipan-petalo.izq{
+
+    left:4px;
+
+    transform:
+        rotate(-20deg);
+
+}
+
+.tulipan-petalo.centro{
+
+    left:24px;
+
+    height:105px;
+
+    z-index:2;
+
+}
+
+.tulipan-petalo.der{
+
+    right:4px;
+
+    transform:
+        rotate(20deg);
+
+}
+
+.tulipan-brillo{
+
+    position:absolute;
+
+    width:16px;
+    height:45px;
+
+    top:15px;
+    left:45px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.22);
+
+    z-index:4;
+
+}
+
+
+/* =====================================================
+   🪷 FLOR DE LOTO
+===================================================== */
+
+.loto-flor{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:140px;
+    height:120px;
+
+    transform:
+        translate(-50%,-50%);
+
+}
+
+.loto-petalo{
+
+    position:absolute;
+
+    left:50%;
+    bottom:10px;
+
+    width:40px;
+    height:100px;
+
+    transform-origin:
+        50% 100%;
+
+    border-radius:
+        70% 70% 35% 35%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffd4eb,
+            #e980bd
+        );
+
+}
+
+.loto-petalo:nth-child(1){
+
+    transform:
+        translateX(-50%)
+        rotate(0deg);
+
+}
+
+.loto-petalo:nth-child(2){
+
+    transform:
+        translateX(-50%)
+        rotate(45deg);
+
+}
+
+.loto-petalo:nth-child(3){
+
+    transform:
+        translateX(-50%)
+        rotate(90deg);
+
+}
+
+.loto-petalo:nth-child(4){
+
+    transform:
+        translateX(-50%)
+        rotate(135deg);
+
+}
+
+.loto-petalo:nth-child(5){
+
+    transform:
+        translateX(-50%)
+        rotate(180deg);
+
+}
+
+.loto-petalo:nth-child(6){
+
+    transform:
+        translateX(-50%)
+        rotate(225deg);
+
+}
+
+.loto-petalo:nth-child(7){
+
+    transform:
+        translateX(-50%)
+        rotate(270deg);
+
+}
+
+.loto-petalo:nth-child(8){
+
+    transform:
+        translateX(-50%)
+        rotate(315deg);
+
+}
+
+.loto-centro{
+
+    position:absolute;
+
+    left:50%;
+    top:58%;
+
+    width:27px;
+    height:27px;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #ffe99a,
+            #dba735
+        );
+
+    box-shadow:
+        0 0 15px
+        rgba(255,225,120,.5);
+
+    z-index:10;
+
+}
+
+
+/* =====================================================
+   🔔 CAMPANILLA
+===================================================== */
+
+.campanilla-flor{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:140px;
+    height:140px;
+
+    transform:
+        translate(-50%,-50%);
+
+}
+
+.campanilla-flor .flor-item{
+
+    position:absolute;
+
+    width:55px;
+    height:75px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #a985ff,
+            #6040bd
+        );
+
+    border-radius:
+        50% 50% 45% 45%;
+
+    transform-origin:
+        bottom center;
+
+}
+
+.campanilla-flor
+.flor-item:nth-child(1){
+
+    left:45px;
+    top:15px;
+
+    transform:
+        rotate(-18deg);
+
+}
+
+.campanilla-flor
+.flor-item:nth-child(2){
+
+    left:10px;
+    top:45px;
+
+    transform:
+        rotate(-38deg);
+
+}
+
+.campanilla-flor
+.flor-item:nth-child(3){
+
+    right:10px;
+    top:45px;
+
+    transform:
+        rotate(38deg);
+
+}
+
+.campanilla-flor
+.flor-item:nth-child(4){
+
+    left:43px;
+    top:55px;
+
+    transform:
+        rotate(0deg);
+
+}
+
+.campanilla-centro{
+
+    position:absolute;
+
+    left:50%;
+    bottom:7px;
+
+    width:10px;
+    height:25px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius:
+        50%;
+
+    background:#f7dc80;
+
+}
+
+
+/* =====================================================
+   NOMBRES
+===================================================== */
+
+.nombre-flor{
+
+    position:absolute;
+
+    bottom:-45px;
+    left:50%;
+
+    transform:
+        translateX(-50%);
+
+    white-space:nowrap;
+
+    color:#c8d9ce;
+
+    font-size:15px;
+
+    opacity:0;
+
+    transition:1s;
+
+}
+
+.planta.adulta
+.nombre-flor{
+
+    opacity:1;
+
+}
+
+
+/* =====================================================
+   MENSAJE
+===================================================== */
+
+.mensaje{
+
+    position:fixed;
+
+    left:50%;
+    bottom:20px;
+
+    width:min(900px,90%);
+
+    padding:8px 18px;
+
+    transform:
+        translateX(-50%);
+
+    text-align:center;
+
+    color:#dce8df;
+
+    font-size:15px;
+
+    line-height:1.6;
+
+    opacity:0;
+
+    transition:1s;
+
+    z-index:31;
+
+}
+
+.mensaje.visible{
+
+    opacity:1;
+
+}
+
+
+/* =====================================================
+   BOTÓN FINAL
+===================================================== */
+
+#botonFinal{
+
+    display:none;
+
+    position:fixed;
+
+    left:50%;
+
+    bottom:105px;
+
+    transform:
+        translateX(-50%);
+
+    z-index:40;
+
+    white-space:nowrap;
+
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+    background:
+        rgba(0,0,0,.72);
+
+    backdrop-filter:
+        blur(10px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.5s;
+
+    z-index:100;
+
+}
+
+.modal.visible{
+
+    opacity:1;
+    visibility:visible;
+
+}
+
+.tarjeta{
+
+    width:min(500px,95%);
+
+    padding:40px 30px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #1d2b23,
+            #101813
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,.6);
+
+    transform:
+        scale(.8);
+
+    transition:.5s;
+
+}
+
+.modal.visible
+.tarjeta{
+
+    transform:
+        scale(1);
+
+}
+
+.tarjeta .emoji{
+
+    font-size:70px;
+
+    margin-bottom:15px;
+
+}
+
+.tarjeta h3{
+
+    font-size:30px;
+
+    margin-bottom:15px;
+
+    color:#bde8c7;
+
+}
+
+.tarjeta p{
+
+    color:#d7ded9;
+
+    line-height:1.8;
+
+    margin-bottom:25px;
+
+}
+
+
+/* =====================================================
+   CORAZONES
+===================================================== */
+
+.corazon{
+
+    position:fixed;
+
+    bottom:-40px;
+
+    pointer-events:none;
+
+    z-index:200;
+
+    animation:
+        subir 5s linear forwards;
+
+}
+
+@keyframes subir{
+
+    0%{
+
+        transform:
+            translateY(0)
+            scale(.5)
+            rotate(0);
+
+        opacity:0;
+
+    }
+
+    15%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:
+            translateY(-110vh)
+            scale(1.3)
+            rotate(360deg);
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* =====================================================
+   📱 TELÉFONOS
+===================================================== */
+
+@media(max-width:700px){
+
+    html,
+    body{
+
+        height:100dvh;
+
+        overflow:hidden;
+
+    }
+
+
+    .titulo{
+
+        top:24px;
+
+        width:94%;
+
+    }
+
+
+    .titulo h2{
+
+        font-size:27px;
+
+        line-height:1.2;
+
+    }
+
+
+    .titulo p{
+
+        font-size:14px;
+
+        margin-top:7px;
+
+    }
+
+
+    .suelo{
+
+        height:21%;
+
+    }
+
+
+    .planta{
+
+        width:150px;
+
+        height:350px;
+
+        bottom:150px;
+
+        transform:
+            scale(.58);
+
+        transform-origin:
+            bottom center;
+
+    }
+
+
+    #tulipan{
+
+        left:-22px;
+
+        transform:
+            scale(.58);
+
+    }
+
+
+    #loto{
+
+        left:50%;
+
+        transform:
+            translateX(-50%)
+            scale(.58);
+
+    }
+
+
+    #campanilla{
+
+        right:-22px;
+
+        transform:
+            scale(.58);
+
+    }
+
+
+    .nombre-flor{
+
+        display:none;
+
+    }
+
+
+    .mensaje{
+
+        bottom:18px;
+
+        width:94%;
+
+        padding:4px 8px;
+
+        font-size:12px;
+
+        line-height:1.45;
+
+    }
+
+
+    #botonFinal{
+
+        bottom:105px;
+
+        width:86%;
+
+        max-width:360px;
+
+        padding:14px 18px;
+
+        font-size:14px;
+
+        line-height:1.3;
+
+        white-space:normal;
+
+    }
+
+
+    .modal{
+
+        padding:15px;
+
+    }
+
+
+    .tarjeta{
+
+        width:94%;
+
+        padding:30px 22px;
+
+    }
+
+
+    .tarjeta .emoji{
+
+        font-size:60px;
+
+    }
+
+
+    .tarjeta h3{
+
+        font-size:25px;
+
+    }
+
+
+    .tarjeta p{
+
+        font-size:15px;
+
+        line-height:1.7;
+
+    }
+
+
+    .tarjeta button{
+
+        width:100%;
+
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     ESTRELLAS
+===================================================== -->
+
+<div id="estrellas"></div>
+
+
+<!-- =====================================================
+     INTRO
+===================================================== -->
+
+<section id="intro">
+
+    <div class="intro-contenido">
+
+        <div class="intro-icono">
+            🌱
+        </div>
+
+        <h1>
+            Tengo algo para ti...
+        </h1>
+
+        <p>
+            A veces una flor tarda en crecer,
+            pero cuando lo hace, puede convertirse
+            en algo realmente bonito.
+            <br><br>
+            Esta pequeña sorpresa también necesita
+            unos segundos para florecer. 🌷
+        </p>
+
+        <button onclick="comenzar()">
+            🌱 Comenzar la sorpresa
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     JARDÍN
+===================================================== -->
+
+<section id="jardin">
+
+    <div class="titulo">
+
+        <h2>
+            Mira cómo crecen 🌱
+        </h2>
+
+        <p>
+            Cada flor tiene su propia historia...
+        </p>
+
+    </div>
+
+
+    <!-- SUELO -->
+
+    <div class="suelo"></div>
+
+
+    <!-- =================================================
+         🌷 TULIPÁN
+    ================================================== -->
+
+    <div
+        class="planta"
+        id="tulipan"
+        onclick="mostrarFlor('tulipan')"
+    >
+
+        <div class="semilla"></div>
+
+        <div class="tallo"></div>
+
+        <div class="hoja izquierda"></div>
+
+        <div class="hoja derecha"></div>
+
+
+        <div class="flor">
+
+            <div class="tulipan-flor">
+
+                <div class="tulipan-petalo izq"></div>
+
+                <div class="tulipan-petalo centro"></div>
+
+                <div class="tulipan-petalo der"></div>
+
+                <div class="tulipan-brillo"></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="nombre-flor">
+            🌷 Tulipán
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         🪷 LOTO
+    ================================================== -->
+
+    <div
+        class="planta"
+        id="loto"
+        onclick="mostrarFlor('loto')"
+    >
+
+        <div class="semilla"></div>
+
+        <div class="tallo"></div>
+
+        <div class="hoja izquierda"></div>
+
+        <div class="hoja derecha"></div>
+
+
+        <div class="flor">
+
+            <div class="loto-flor">
+
+                <div class="loto-petalo"></div>
+                <div class="loto-petalo"></div>
+                <div class="loto-petalo"></div>
+                <div class="loto-petalo"></div>
+                <div class="loto-petalo"></div>
+                <div class="loto-petalo"></div>
+                <div class="loto-petalo"></div>
+                <div class="loto-petalo"></div>
+
+                <div class="loto-centro"></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="nombre-flor">
+            🪷 Flor de loto
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         🔔 CAMPANILLA
+    ================================================== -->
+
+    <div
+        class="planta"
+        id="campanilla"
+        onclick="mostrarFlor('campanilla')"
+    >
+
+        <div class="semilla"></div>
+
+        <div class="tallo"></div>
+
+        <div class="hoja izquierda"></div>
+
+        <div class="hoja derecha"></div>
+
+
+        <div class="flor">
+
+            <div class="campanilla-flor">
+
+                <div class="flor-item"></div>
+
+                <div class="flor-item"></div>
+
+                <div class="flor-item"></div>
+
+                <div class="flor-item"></div>
+
+                <div class="campanilla-centro"></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="nombre-flor">
+            🔔 Campanilla
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         BOTÓN
+    ================================================== -->
+
+    <button
+        id="botonFinal"
+        onclick="abrirCarta()"
+    >
+
+        💗 Descubrir por qué elegí estas flores
+
+    </button>
+
+
+    <!-- =================================================
+         MENSAJE
+    ================================================== -->
+
+    <div
+        class="mensaje"
+        id="mensaje"
+    >
+
+        🌷 Tulipán — porque tu ternura hace que
+        los días normales se sientan especiales.
+        <br>
+
+        🪷 Loto — porque hay algo en ti que admiro
+        y que hace que quiera seguir conociéndote.
+        <br>
+
+        🔔 Campanilla — porque contigo hasta los
+        pequeños momentos pueden convertirse
+        en recuerdos bonitos.
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CARTA
+===================================================== -->
+
+<div
+    class="modal"
+    id="modal"
+>
+
+    <div class="tarjeta">
+
+        <div class="emoji">
+            🌷🪷🔔
+        </div>
+
+        <h3>
+            Para ti 💗
+        </h3>
+
+        <p>
+
+            Elegí estas tres flores porque cada una
+            me recuerda un poquito a ti.
+
+            <br><br>
+
+            El tulipán por la ternura,
+            el loto por la belleza que encuentro
+            incluso en los pequeños detalles,
+            y las campanillas por esos momentos
+            que sin darme cuenta terminan
+            haciéndome sonreír.
+
+            <br><br>
+
+            Y si tuviera que elegir una flor
+            para representar lo que siento...
+
+            <br>
+
+            probablemente ninguna sería suficiente. ❤️
+
+        </p>
+
+        <button onclick="cerrarCarta()">
+            🌷 Cerrar
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   CREAR ESTRELLAS
+===================================================== */
+
+const estrellas =
+document.getElementById("estrellas");
+
+for(let i=0;i<90;i++){
+
+    const estrella =
+    document.createElement("div");
+
+    estrella.className="estrella";
+
+    estrella.style.left =
+        Math.random()*100+"%";
+
+    estrella.style.top =
+        Math.random()*100+"%";
+
+    estrella.style.animationDelay =
+        Math.random()*3+"s";
+
+    estrellas.appendChild(estrella);
+
+}
+
+
+/* =====================================================
+   COMENZAR
+===================================================== */
+
+function comenzar(){
+
+    document
+        .getElementById("intro")
+        .classList
+        .add("oculta");
+
+    setTimeout(()=>{
+
+        document
+            .getElementById("jardin")
+            .classList
+            .add("visible");
+
+        comenzarCrecimiento();
+
+    },700);
+
+}
+
+
+/* =====================================================
+   CRECIMIENTO
+===================================================== */
+
+function comenzarCrecimiento(){
+
+    const plantas = [
+
+        document.getElementById("tulipan"),
+
+        document.getElementById("loto"),
+
+        document.getElementById("campanilla")
+
+    ];
+
+
+    /* CRECEN UNA POR UNA */
+
+    plantas.forEach((planta,index)=>{
+
+        setTimeout(()=>{
+
+            planta.classList.add("creciendo");
+
+        },1000 + index*1800);
+
+
+        setTimeout(()=>{
+
+            planta.classList.add("adulta");
+
+        },3600 + index*1800);
+
+    });
+
+
+    /* MOSTRAR BOTÓN */
+
+    setTimeout(()=>{
+
+        document
+            .getElementById("botonFinal")
+            .style.display="block";
+
+        document
+            .getElementById("mensaje")
+            .classList
+            .add("visible");
+
+    },8500);
+
+}
+
+
+/* =====================================================
+   MOSTRAR INFORMACIÓN DE CADA FLOR
+===================================================== */
+
+function mostrarFlor(tipo){
+
+    let titulo="";
+    let texto="";
+    let emoji="";
+
+
+    if(tipo==="tulipan"){
+
+        titulo="🌷 El tulipán";
+
+        emoji="🌷";
+
+        texto=
+        "Lo elegí porque representa cariño y ternura. " +
+        "Me recuerda a esa sensación bonita que aparece " +
+        "cuando alguien empieza a ocupar un lugar especial " +
+        "en tu vida.";
+
+    }
+
+
+    if(tipo==="loto"){
+
+        titulo="🪷 La flor de loto";
+
+        emoji="🪷";
+
+        texto=
+        "La elegí porque representa belleza y calma. " +
+        "Me gusta porque, incluso en momentos difíciles, " +
+        "puede seguir creciendo y mostrando algo hermoso.";
+
+    }
+
+
+    if(tipo==="campanilla"){
+
+        titulo="🔔 La campanilla";
+
+        emoji="🔔";
+
+        texto=
+        "La elegí porque me recuerda a la alegría de " +
+        "los pequeños momentos. Esos instantes que quizá " +
+        "parecen simples, pero que terminan significando mucho.";
+
+    }
+
+
+    document
+        .querySelector(".tarjeta .emoji")
+        .textContent=emoji;
+
+    document
+        .querySelector(".tarjeta h3")
+        .textContent=titulo;
+
+    document
+        .querySelector(".tarjeta p")
+        .textContent=texto;
+
+    document
+        .getElementById("modal")
+        .classList
+        .add("visible");
+
+}
+
+
+/* =====================================================
+   CARTA FINAL
+===================================================== */
+
+function abrirCarta(){
+
+    const tarjeta =
+        document.querySelector(".tarjeta");
+
+    tarjeta.querySelector(".emoji")
+        .textContent="🌷🪷🔔";
+
+    tarjeta.querySelector("h3")
+        .textContent="Para ti 💗";
+
+    tarjeta.querySelector("p")
+        .innerHTML=`
+
+        Elegí estas tres flores porque cada una
+        me recuerda un poquito a ti.
+
+        <br><br>
+
+        🌷 El tulipán por la ternura.
+
+        <br>
+
+        🪷 El loto por esa belleza que encuentro
+        en los pequeños detalles.
+
+        <br>
+
+        🔔 La campanilla por esos momentos que
+        sin darme cuenta terminan haciéndome sonreír.
+
+        <br><br>
+
+        Y si tuviera que elegir una flor para
+        representar lo que siento...
+
+        <br><br>
+
+        probablemente ninguna sería suficiente. ❤️
+
+    `;
+
+
+    document
+        .getElementById("modal")
+        .classList
+        .add("visible");
+
+
+    crearCorazones();
+
+}
+
+
+/* =====================================================
+   CERRAR CARTA
+===================================================== */
+
+function cerrarCarta(){
+
+    document
+        .getElementById("modal")
+        .classList
+        .remove("visible");
+
+}
+
+
+/* =====================================================
+   CORAZONES
+===================================================== */
+
+function crearCorazones(){
+
+    for(let i=0;i<20;i++){
+
+        setTimeout(()=>{
+
+            const corazon =
+                document.createElement("div");
+
+            corazon.className="corazon";
+
+            corazon.textContent =
+                Math.random()>.5
+                ? "❤️"
+                : "💗";
+
+            corazon.style.left =
+                Math.random()*100+"%";
+
+            corazon.style.fontSize =
+                (15 + Math.random()*25)+"px";
+
+            corazon.style.animationDuration =
+                (4 + Math.random()*3)+"s";
+
+            document.body.appendChild(corazon);
+
+
+            setTimeout(()=>{
+
+                corazon.remove();
+
+            },7000);
+
+        },i*150);
+
+    }
+
+}
+
+
+/* =====================================================
+   CERRAR MODAL AL TOCAR AFUERA
+===================================================== */
+
+document
+.getElementById("modal")
+.addEventListener("click",function(e){
+
+    if(e.target===this){
+
+        cerrarCarta();
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
